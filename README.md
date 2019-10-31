@@ -5,7 +5,7 @@ To build using the Dockerfile use the build.sh script. Note: The Dockerfile requ
 ./build.sh [db host] [port]
 EX: ./build.sh yourhost.com 3050
 
-To pull the Docker Hub version ot pa-radserver Docker use the pull.sh script
+To pull the Docker Hub version of pa-radserver Docker use the pull.sh script
 ./pull.sh
 
 To pull and run the Docker Hub version of pa-radserver Docker for a non-production environment use the pull-run.sh script
@@ -16,7 +16,7 @@ To pull and run the Docker Hub version of pa-radserver Docker for a production e
 ./pull-run-production.sh [db host] [port]
 EX: ./pull-run-production.sh yourhost.com 3050
 
-To run the Docker Hub version of pa-radserver Docker for a non-production environment use the pull-run.sh script
+To run the Docker Hub version of pa-radserver Docker for a non-production environment use the run.sh script
 ./run.sh [db host] [port]
 ./run.sh yourhost.com 3050
 
