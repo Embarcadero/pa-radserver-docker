@@ -21,8 +21,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -yy install --no-in
 #====END OTHER LIBS
 
 #====GET ZIP FILES====
-ADD https://altd.embarcadero.com/releases/studio/21.0/1/RADServerInstallerLinux.1.zip ./radserver.zip
-ADD https://altd.embarcadero.com/releases/studio/21.0/1/PAServer/LinuxPAServer21.0.tar.gz ./paserver.tar.gz
+ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerInstallerLinux-20220912.zip ./radserver.zip
+ADD https://altd.embarcadero.com/releases/studio/22.0/112/LinuxPAServer22.0.tar.gz ./paserver.tar.gz
 
 RUN unzip radserver.zip
 RUN tar xvzf paserver.tar.gz
@@ -32,7 +32,7 @@ RUN touch ./radserverlicense.slip
 
 RUN sh ./radserver_install.sh -silent
 
-RUN mv PAServer-21.0/* .
+RUN mv PAServer-22.0/* .
 
 #populate emsserver.ini with interbase connection data
 RUN cp /etc/ems/objrepos/emsserver.ini /etc/ems/emsserver.ini
@@ -63,7 +63,7 @@ RUN rm RADServer.bin
 RUN rm radserverlicense.slip
 RUN rm radserver.zip
 RUN rm InterBase_2020_Linux.zip
-RUN rm PAServer-21.0 -r
+RUN rm PAServer-22.0 -r
 RUN rm paserver.tar.gz
 RUN rm radserver_install.sh
 RUN rm /opt/interbase -r
