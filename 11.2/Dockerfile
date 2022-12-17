@@ -20,6 +20,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -yy install --no-in
     && apt-get -y autoclean
 #====END OTHER LIBS
 
+# Fix "strings: '/lib/libc.so.6': No such file"
+RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
+
 #====GET ZIP FILES====
 ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerInstallerLinux-20220912.zip ./radserver.zip
 ADD https://altd.embarcadero.com/releases/studio/22.0/112/LinuxPAServer22.0.tar.gz ./paserver.tar.gz
