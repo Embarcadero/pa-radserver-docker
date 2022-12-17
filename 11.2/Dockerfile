@@ -39,20 +39,23 @@ RUN mv PAServer-22.0/* .
 
 #populate emsserver.ini with interbase connection data
 RUN cp /etc/ems/objrepos/emsserver.ini /etc/ems/emsserver.ini
-RUN echo "#!/bin/bash" > ./emsscript.sh
-RUN echo "sed -i 's/\\\r\$//' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!DBINSTANCENAME\\\]\\\n#$dbhost$ForwardSlash$dbport\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!DBPATH\\\]\\\n#/etc/ems/emsserver.ib\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!DBUSERNAME\\\]\\\n#sysdba\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!DBPASSWORD\\\]\\\n#masterkey\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!MASTERSECRET\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!APPSECRET\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!APPLICATIONID\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!SERVERPORT\\\]\\\n#8080\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!CONSOLEUSER\\\]\\\n#consoleuser\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPASS\\\]\\\n#consolepass\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPORT\\\]\\\n#8081\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
-RUN echo "sed -i ':a;N;\$!ba;s#\\\[!RESOURCESFILES\\\]\\\n#/etc/ems/objrepos\\\n#g' /etc/ems/emsserver.ini" >> ./emsscript.sh
+RUN /bin/echo -e "#!/bin/bash\n\
+sed -i 's/\\\r\$//' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!DBINSTANCENAME\\\]\\\n#$dbhost$ForwardSlash$dbport\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!DBPATH\\\]\\\n#/etc/ems/emsserver.ib\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!DBUSERNAME\\\]\\\n#sysdba\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!DBPASSWORD\\\]\\\n#masterkey\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!MASTERSECRET\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!APPSECRET\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!APPLICATIONID\\\]\\\n# \\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!SERVERPORT\\\]\\\n#8080\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!CONSOLEUSER\\\]\\\n#consoleuser\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPASS\\\]\\\n#consolepass\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPORT\\\]\\\n#8081\\\n#g' /etc/ems/emsserver.ini\n\
+sed -i ':a;N;\$!ba;s#\\\[!RESOURCESFILES\\\]\\\n#/etc/ems/objrepos\\\n#g' /etc/ems/emsserver.ini\n\
+"\
+>> ./emsscript.sh
+
 RUN sh ./emsscript.sh
 #=============================end ems population
 
