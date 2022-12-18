@@ -32,7 +32,7 @@ RUN tar xvzf paserver.tar.gz
 #========END ZIP FILES
 
 # fix "uname -a | grep Ubuntu" bug in the radserver_install.sh
-RUN sed -i.bak "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" radserver_install.sh
+RUN sed -i "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" radserver_install.sh
 
 RUN touch ./radserverlicense.slip
 
@@ -64,10 +64,10 @@ RUN sh ./emsscript.sh
 
 # fix "uname -a | grep Ubuntu" and "System has not been booted with systemd 
 # as init system (PID 1)" bugs in the apachesetup.sh and rssetup.sh
-RUN sed -i.bak "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" /tmp/apachesetup.sh ; \
-sed -i.bak "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" /tmp/rssetup.sh ; \
-sed -i.bak2 "s/systemctl restart apache2.service/service apache2 restart/" /tmp/apachesetup.sh ; \
-sed -i.bak3 "s/systemctl status apache2.service --no-pager/service apache2 status/" /tmp/apachesetup.sh
+RUN sed -i "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" /tmp/apachesetup.sh ; \
+sed -i "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" /tmp/rssetup.sh ; \
+sed -i "s/systemctl restart apache2.service/service apache2 restart/" /tmp/apachesetup.sh ; \
+sed -i "s/systemctl status apache2.service --no-pager/service apache2 status/" /tmp/apachesetup.sh
 
 RUN sed -e '/\/opt\/interbase\/bin\/ibmgr/ { N; d; }' /tmp/rssetup.sh  -i
 RUN sh /tmp/rssetup.sh swaggerui RS,RC,SUI
