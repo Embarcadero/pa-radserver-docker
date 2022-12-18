@@ -12,7 +12,7 @@ COPY radserver_docker.sh ./radserver_docker.sh
 
 #INSTALL APACHE AND OTHER LIBS
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -yy install --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -yy install --no-install-recommends \
     apache2 \
     unzip \
     xorg libgl1-mesa-dev libosmesa-dev libgtk-3-bin build-essential libcurl3 libcurl-openssl1.0-dev \
