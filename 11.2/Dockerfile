@@ -7,7 +7,9 @@ ENV DB_HOST=$dbhost
 ENV DB_PORT=$dbport
 ENV PA_SERVER_PASSWORD=$password
 
-COPY radserver_docker.sh ./radserver_docker.sh
+WORKDIR /
+
+COPY radserver_docker.sh radserver_docker.sh
 
 
 #INSTALL APACHE AND OTHER LIBS
@@ -34,7 +36,7 @@ RUN tar xvzf paserver.tar.gz
 # fix "uname -a | grep Ubuntu" bug in the radserver_install.sh
 RUN sed -i "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" radserver_install.sh
 
-RUN touch ./radserverlicense.slip
+RUN touch radserverlicense.slip
 
 RUN sh ./radserver_install.sh -silent
 
@@ -57,7 +59,7 @@ sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPASS\\\]\\\n#consolepass\\\n#g' /etc/ems/emsser
 sed -i ':a;N;\$!ba;s#\\\[!CONSOLEPORT\\\]\\\n#8081\\\n#g' /etc/ems/emsserver.ini\n\
 sed -i ':a;N;\$!ba;s#\\\[!RESOURCESFILES\\\]\\\n#/etc/ems/objrepos\\\n#g' /etc/ems/emsserver.ini\n\
 "\
->> ./emsscript.sh
+>> emsscript.sh
 
 RUN sh ./emsscript.sh
 #=============================end ems population
@@ -70,7 +72,7 @@ sed -i "s/systemctl restart apache2.service/service apache2 restart/" /tmp/apach
 sed -i "s/systemctl status apache2.service --no-pager/service apache2 status/" /tmp/apachesetup.sh
 
 RUN sed -e '/\/opt\/interbase\/bin\/ibmgr/ { N; d; }' /tmp/rssetup.sh  -i
-RUN sh /tmp/rssetup.sh swaggerui RS,RC,SUI
+RUN /tmp/rssetup.sh swaggerui RS,RC,SUI
 
 RUN sh /tmp/apachesetup.sh radserver radconsole RS,RC
 
