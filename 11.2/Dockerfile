@@ -14,12 +14,20 @@ COPY radserver_docker.sh radserver_docker.sh
 
 #INSTALL APACHE AND OTHER LIBS
 
-RUN apt-get update \
-    && apt-get -yy --no-install-recommends install apache2 unzip xorg \
-        libgl1-mesa-dev libosmesa-dev libgtk-3-bin build-essential libcurl3 \
+RUN apt-get update
+RUN apt-get -yy --no-install-recommends install \
+        apache2 \
+        build-essential \
         libcurl-openssl1.0-dev \
-    && apt-get -y autoremove \
-    && apt-get -y autoclean
+        libcurl3 \
+        libgl1-mesa-dev \
+        libgtk-3-bin \
+        libosmesa-dev \
+        libpython3.6 \
+        unzip \
+        xorg
+RUN apt-get -y --no-install-recommends install 
+RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
 
 # Fix "strings: '/lib/libc.so.6': No such file"
@@ -41,6 +49,9 @@ RUN touch radserverlicense.slip
 RUN sh ./radserver_install.sh -silent
 
 RUN mv PAServer-22.0/* .
+# Following might be helpful for versions of libpython different than 3.6
+# RUN mv lldb/lib/libpython3.so lldb/lib/libpython3.so_
+# RUN ln -s /lib/x86_64-linux-gnu/libpython3.8.so.1 lldb/lib/libpython3.so
 
 #populate emsserver.ini with interbase connection data
 RUN cp /etc/ems/objrepos/emsserver.ini /etc/ems/emsserver.ini
