@@ -6,7 +6,7 @@ if [ "$1" == '' ] || [ "$2" == '' ] || [ "$3" == '' ]; then
     echo "Required arguments: RAD Server database (InterBase) host and port and module filename";
     echo "ex: build-run.sh example.com 3050 module.so";
 else
-    if [ -e ./$1]; then
+    if [ -e ./$3 ]; then
         bash ./build.sh $3;
 
         bash ./run.sh $1 $2;
