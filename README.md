@@ -1,9 +1,10 @@
 # pa-radserver-docker
 Docker script for RAD Studio Linux deployment including RAD Server engine
 
-- [Container available on Docker Hub](https://hub.docker.com/r/radstudio/paserver)
-- [PAServer Documentation](http://docwiki.embarcadero.com/RADStudio/en/PAServer,_the_Platform_Assistant_Server_Application)
-- [More information on RAD Studio](https://www.embarcadero.com/products/rad-studio)
+- Container available on [Docker Hub](https://hub.docker.com/r/radstudio/paserver)
+- DocWiki [PAServer Documentation](http://docwiki.embarcadero.com/RADStudio/en/PAServer,_the_Platform_Assistant_Server_Application)
+- DocWiki [RAD Server Docker Deployment](https://docwiki.embarcadero.com/RADStudio/en/RAD_Server_Docker_Deployment)
+- More information on [RAD Studio](https://www.embarcadero.com/products/rad-studio)
 
 The image defaults to running **PAServer** on port `64211` with the _password_ `securepass`, and **Broadwayd** on port `8082`
 
