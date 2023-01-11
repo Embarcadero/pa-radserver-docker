@@ -13,11 +13,10 @@ The 10.x images use Ubuntu 18.04.6 LTS (Bionic Beaver) while the 11.x images use
 ## Instructions
 
 If you want to modify or build from GitHub without using [Docker Hub](https://hub.docker.com/r/radstudio/paserver), you can build the Dockerfile with the `build.sh` script. **Note:** The Dockerfile requires the `paserver_docker.sh` script in the same directory
-
-Usage: `./build.sh [db host] [port]`
 ```
-./build.sh yourhost.com 3050
+./build.sh [db host] [port]
 ```
+EX: `./build.sh yourhost.com 3050`
 
 To pull the Docker Hub version of pa-radserver Docker use the `pull.sh` script
 ```
@@ -25,32 +24,28 @@ To pull the Docker Hub version of pa-radserver Docker use the `pull.sh` script
 ```
 
 To pull and run the Docker Hub version of pa-radserver Docker for a non-production environment use the `pull-run.sh` script
-
-Usage: `./pull-run.sh [db host] [port]`
 ```
-./pull-run.sh yourhost.com 3050
+./pull-run.sh [db host] [port]
 ```
+EX: `./pull-run.sh yourhost.com 3050`
 
 To pull and run the Docker Hub version of pa-radserver Docker for a production environment use the `pull-run-production.sh` script
-
-Usage: `./pull-run-production.sh [db host] [port]`
 ```
-./pull-run-production.sh yourhost.com 3050
+./pull-run-production.sh [db host] [port]
 ```
+EX: `./pull-run-production.sh yourhost.com 3050`
 
 To run the Docker Hub version of pa-radserver Docker for a non-production environment use the `run.sh` script
-
-Usage: `./run.sh [db host] [port]`
 ```
-./run.sh yourhost.com 3050
+./run.sh [db host] [port]
 ```
+EX: `./run.sh yourhost.com 3050`
 
 To run the Docker Hub version of pa-radserver Docker for a production environment use the `run-production.sh` script
-
-Usage: `./run-production.sh [db host] [port]`
 ```
-./run-production.sh yourhost.com 3050
+./run-production.sh [db host] [port]
 ```
+EX: `./run-production.sh yourhost.com 3050`
 
 To configure the `emsserver.ini` file of an already running instance of pa-radserver run the `config.sh` script
 ```
@@ -59,22 +54,19 @@ To configure the `emsserver.ini` file of an already running instance of pa-radse
 The `config.sh` script will restart apache automatically. 
 
 The Solutions directory contains possible usage scenarios for using the pa-radserver Docker image. 
-The Custom-RAD_Server-Module solution is for the scenario in which the user has a custom module they want to deploy to RAD Server. The custom endpoint resource module needs to be in the same directory as the Dockerfile when the `build-run.sh` script is called.
-
-Usage: `./build-run.sh [db host] [port] [module file name]`
+The Custom-RAD_Server-Module solution is for the scenario in which the user has a custom module they want to deploy to RAD Server. The custom endpoint resource module needs to be in the same directory as the Dockerfile when the `build-run.sh` script is called. 
 ```
 ./pull.sh
+./build-run.sh [db host] [port] [module file name]
 ./build-run.sh yourhost.com 3050 samplemodule.so
 ```
 
 The Example-Child-Image solution is for the scenario in which the user wants to add other items to the docker image. The user can add apt packages other custom items through the Dockerfile. 
-
-Usage: `./build-run.sh [db host] [port] [module file name]`
 ```
 ./pull.sh
+./build-run.sh [db host] [port] [module file name]
 ./build-run.sh yourhost.com 3050 samplemodule.so
 ```
-
 
 _This software is Copyright © [Embarcadero Technologies, Inc.](https://www.embarcadero.com/)_
 
