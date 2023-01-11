@@ -1,5 +1,5 @@
 # pa-radserver-docker
-Docker script for RAD Studio Linux deployment including RAD Server engine
+Docker script to build RAD Studio Linux deployment including RAD Server engine
 
 - Container available on [Docker Hub](https://hub.docker.com/r/radstudio/paserver)
 - DocWiki [PAServer Documentation](http://docwiki.embarcadero.com/RADStudio/en/PAServer,_the_Platform_Assistant_Server_Application)
