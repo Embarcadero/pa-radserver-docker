@@ -1,4 +1,5 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
+# jammy = 22.04
 
 ARG dbhost=localhost
 ARG dbport=3050
@@ -7,19 +8,13 @@ ENV DB_HOST=$dbhost
 ENV DB_PORT=$dbport
 ENV PA_SERVER_PASSWORD=$password
 
-WORKDIR /
-
-COPY radserver_docker.sh radserver_docker.sh
-
-
 #INSTALL APACHE AND OTHER LIBS
-
 RUN apt-get update
 RUN apt-get -yy --no-install-recommends install \
         apache2 \
         build-essential \
-        libcurl-openssl1.0-dev \
-        libcurl3 \
+        libcurl4-openssl-dev \
+        libcurl4 \
         libgl1-mesa-dev \
         libgtk-3-bin \
         libosmesa-dev \
@@ -29,6 +24,10 @@ RUN apt-get -yy --no-install-recommends install \
 RUN apt-get -y --no-install-recommends install 
 RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
+
+WORKDIR /
+
+COPY radserver_docker.sh radserver_docker.sh
 
 # Fix "strings: '/lib/libc.so.6': No such file"
 RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
