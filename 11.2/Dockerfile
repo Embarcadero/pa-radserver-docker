@@ -9,7 +9,7 @@ ENV DB_PORT=$dbport
 ENV PA_SERVER_PASSWORD=$password
 
 #INSTALL APACHE AND OTHER LIBS
-RUN apt-get update &&
+RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yy --no-install-recommends install \
     apache2 \
     build-essential \
