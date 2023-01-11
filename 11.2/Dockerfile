@@ -1,4 +1,5 @@
 FROM ubuntu:jammy
+# jammy = 22.04
 
 ARG dbhost=localhost
 ARG dbport=3050
@@ -7,27 +8,26 @@ ENV DB_HOST=$dbhost
 ENV DB_PORT=$dbport
 ENV PA_SERVER_PASSWORD=$password
 
-WORKDIR /
-
-COPY radserver_docker.sh radserver_docker.sh
-
-
 #INSTALL APACHE AND OTHER LIBS
-
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -yy install \
+RUN apt-get update &&
+    DEBIAN_FRONTEND=noninteractive apt-get -yy --no-install-recommends install \
+    apache2 \
     build-essential \
     libcurl4-openssl-dev \
-    libcurl3-gnutls \
+    libcurl4 \
     libgl1-mesa-dev \
     libgtk-3-bin \
     libosmesa-dev \
-    libpython3.10 \
+    libpython3.6 \
     unzip \
     xorg
 RUN apt-get -y --no-install-recommends install 
 RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
+
+WORKDIR /
+
+COPY radserver_docker.sh radserver_docker.sh
 
 # Fix "strings: '/lib/libc.so.6': No such file"
 RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
