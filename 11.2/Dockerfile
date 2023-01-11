@@ -106,8 +106,9 @@ RUN echo "" > /var/www/html/index.html
 
 RUN service apache2 restart
 
-# PAServer
+#Apache
 EXPOSE 80 
+# PAServer
 EXPOSE 64211
 # broadwayd
 EXPOSE 8082
