@@ -5,5 +5,10 @@ if [ "$1" == '' ] || [ "$2" == '' ]; then
     echo "Required arguments: RAD Server database (InterBase) host and port";
     echo "ex: build.sh example.com 3050";
 else
-    docker build --build-arg password=securepass --build-arg dbhost=$1 --build-arg dbport=$2 --tag radstudio/pa-radserver .
+    docker build --build-arg password=securepass \
+        --build-arg dbhost=$1 --build-arg dbport=$2 \
+        --tag radstudio/pa-radserver:latest \
+        --tag radstudio/pa-radserver:alexandria \
+        --tag radstudio/pa-radserver:11.2 \
+        .
 fi
