@@ -18,10 +18,9 @@ RUN apt-get update && \
     libgl1-mesa-dev \
     libgtk-3-bin \
     libosmesa-dev \
-    libpython3.6 \
+    libpython3.10 \
     unzip \
     xorg
-RUN apt-get -y --no-install-recommends install 
 RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
 
