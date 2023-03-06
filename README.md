@@ -1,7 +1,9 @@
 # pa-radserver-docker
 Docker script to build RAD Studio Linux deployment image including RAD Server engine
 
-- Container available on [Docker Hub](https://hub.docker.com/r/radstudio/paserver)
+**Note:** *This image needs a different container running InterBase to function.*
+
+- Container available on [Docker Hub](https://hub.docker.com/r/radstudio/pa-radserver)
 - DocWiki [PAServer Documentation](http://docwiki.embarcadero.com/RADStudio/en/PAServer,_the_Platform_Assistant_Server_Application)
 - DocWiki [RAD Server Docker Deployment](https://docwiki.embarcadero.com/RADStudio/en/RAD_Server_Docker_Deployment)
 - More information on [RAD Studio](https://www.embarcadero.com/products/rad-studio)
@@ -13,26 +15,31 @@ The 10.x images use Ubuntu 18.04.6 LTS (Bionic Beaver) while the 11.x images use
 
 ## Instructions
 
-If you want to modify or build from GitHub without using [Docker Hub](https://hub.docker.com/r/radstudio/paserver), you can build the Dockerfile with the `build.sh` script. **Note:** The Dockerfile requires the `paserver_docker.sh` script in the same directory
+If you want to modify or build from GitHub without using [Docker Hub](https://hub.docker.com/r/radstudio/pa-radserver), you can build the Dockerfile with the `build.sh` script. **Note:** The Dockerfile requires the `paserver_docker.sh` script in the same directory
 
 Usage: `./build.sh [db host] [port]`
 ```
 ./build.sh yourhost.com 3050
 ```
 
-To pull the Docker Hub version of pa-radserver Docker use the `pull.sh` script
+To pull the [Docker Hub version of pa-radserver](https://hub.docker.com/r/radstudio/pa-radserver) image use the `pull.sh` script
 ```
 ./pull.sh
 ```
+or
+```
+docker pull radstudio/pa-radserver:latest
+```
+Where `latest` is the desired tag.
 
-To pull and run the Docker Hub version of pa-radserver Docker for a non-production environment use the `pull-run.sh` script
+To pull and run the [Docker Hub version of pa-radserver](https://hub.docker.com/r/radstudio/pa-radserver) image for a debug/non-production environment use the `pull-run.sh` script
 
 Usage: `./pull-run.sh [db host] [port]`
 ```
 ./pull-run.sh yourhost.com 3050
 ```
 
-To pull and run the Docker Hub version of pa-radserver Docker for a production environment use the `pull-run-production.sh` script
+To pull and run the [Docker Hub version of pa-radserver](https://hub.docker.com/r/radstudio/pa-radserver) image for a production/non-debug environment use the `pull-run-production.sh` script
 
 Usage: `./pull-run-production.sh [db host] [port]`
 ```
@@ -46,7 +53,7 @@ Usage: `./run.sh [db host] [port]`
 ./run.sh yourhost.com 3050
 ```
 
-To run the Docker Hub version of pa-radserver Docker for a production environment use the `run-production.sh` script
+To run the [Docker Hub version of pa-radserver](https://hub.docker.com/r/radstudio/pa-radserver) image for a production/non-debug environment use the `run-production.sh` script
 
 Usage: `./run-production.sh [db host] [port]`
 ```

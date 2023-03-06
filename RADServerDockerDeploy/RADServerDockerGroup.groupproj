@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EFEDBBEF-1CA0-4B1B-B161-843C9A63CAB3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="RADServerDockerDeploy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RADServerDockerModule.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RADServerDockerDeploy">
+        <MSBuild Projects="RADServerDockerDeploy.dproj"/>
+    </Target>
+    <Target Name="RADServerDockerDeploy:Clean">
+        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RADServerDockerDeploy:Make">
+        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="RADServerDockerModule">
+        <MSBuild Projects="RADServerDockerModule.dproj"/>
+    </Target>
+    <Target Name="RADServerDockerModule:Clean">
+        <MSBuild Projects="RADServerDockerModule.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RADServerDockerModule:Make">
+        <MSBuild Projects="RADServerDockerModule.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RADServerDockerDeploy;RADServerDockerModule"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RADServerDockerDeploy:Clean;RADServerDockerModule:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RADServerDockerDeploy:Make;RADServerDockerModule:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

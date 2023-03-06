@@ -1,5 +1,5 @@
 FROM ubuntu:jammy
-# jammy = 22.04
+# jammy is the code name of 22.04 LTS
 
 ARG dbhost=localhost
 ARG dbport=3050
@@ -33,7 +33,7 @@ RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
 
 #====GET ZIP FILES====
 ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerInstallerLinux-20220912.zip ./radserver.zip
-ADD https://altd.embarcadero.com/releases/studio/22.0/112/LinuxPAServer22.0.tar.gz ./paserver.tar.gz
+ADD https://altd.embarcadero.com/releases/studio/22.0/113/LinuxPAServer22.0.tar.gz ./paserver.tar.gz
 
 RUN unzip radserver.zip
 RUN tar xvzf paserver.tar.gz

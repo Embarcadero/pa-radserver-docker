@@ -9,6 +9,6 @@ else
         --build-arg dbhost=$1 --build-arg dbport=$2 \
         --tag radstudio/pa-radserver:latest \
         --tag radstudio/pa-radserver:alexandria \
-        --tag radstudio/pa-radserver:11.2 \
+        --tag radstudio/pa-radserver:11.3 \
         .
 fi

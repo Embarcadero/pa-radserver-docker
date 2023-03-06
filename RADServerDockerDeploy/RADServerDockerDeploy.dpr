@@ -4,6 +4,10 @@ program RADServerDockerDeploy;
 
 {$R *.res}
 
+
+
+{$R *.dres}
+
 uses
   System.Classes,
   System.Types,
