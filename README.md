@@ -1,4 +1,5 @@
 # pa-radserver-docker
+<a href="https://www.embarcadero.com/products/rad-server"><img alt="Embarcadero RAD Server" src="https://user-images.githubusercontent.com/821930/228645955-70692390-f3e0-4f15-937e-7935725b3684.png" align="right"></a>
 Docker script to build RAD Studio Linux deployment image including RAD Server engine
 
 **Note:** *This image needs a different container running InterBase to function.*
