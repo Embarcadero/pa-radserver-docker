@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == '' ] || [ "$2" == '' ] || [ "$3" == '' ]; then
+if [ "$1" = '' ] || [ "$2" = '' ] || [ "$3" = '' ]; then
     echo "RAD Server Docker pa-radserver-custom-module Build-Run Script";
     echo "Place RAD Server endpoint custom resource module in this directory and pass it as the third argument.";
     echo "Required arguments: RAD Server database (InterBase) host and port and module filename";

@@ -32,8 +32,8 @@ COPY radserver_docker.sh radserver_docker.sh
 RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
 
 #====GET ZIP FILES====
-ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerInstallerLinux-20220912.zip ./radserver.zip
-ADD https://altd.embarcadero.com/releases/studio/22.0/113/LinuxPAServer22.0.tar.gz ./paserver.tar.gz
+ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerLinux-20221103.zip ./radserver.zip
+ADD https://altd.embarcadero.com/releases/studio/23.0/120/LinuxPAServer23.0.tar.gz ./paserver.tar.gz
 
 RUN unzip radserver.zip
 RUN tar xvzf paserver.tar.gz
@@ -46,7 +46,7 @@ RUN touch radserverlicense.slip
 
 RUN sh ./radserver_install.sh -silent
 
-RUN mv PAServer-22.0/* .
+RUN mv PAServer-23.0/* .
 
 # link to installed libpython3.10
 RUN mv lldb/lib/libpython3.so lldb/lib/libpython3.so_
@@ -91,7 +91,7 @@ RUN rm RADServer.bin
 RUN rm radserverlicense.slip
 RUN rm radserver.zip
 RUN rm InterBase_2020_Linux.zip
-RUN rm PAServer-22.0 -r
+RUN rm PAServer-23.0 -r
 RUN rm paserver.tar.gz
 RUN rm radserver_install.sh
 RUN rm /opt/interbase -r

@@ -3,9 +3,6 @@ program RADServerDockerDeploy;
 {$APPTYPE CONSOLE}
 
 {$R *.res}
-
-
-
 {$R *.dres}
 
 uses
