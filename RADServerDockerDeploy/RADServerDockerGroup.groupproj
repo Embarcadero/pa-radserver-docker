@@ -3,10 +3,10 @@
         <ProjectGuid>{EFEDBBEF-1CA0-4B1B-B161-843C9A63CAB3}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="RADServerDockerDeploy.dproj">
+        <Projects Include="RADServerDockerModule.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="RADServerDockerModule.dproj">
+        <Projects Include="RADServerDockerDeploy.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,15 +17,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="RADServerDockerDeploy">
-        <MSBuild Projects="RADServerDockerDeploy.dproj"/>
-    </Target>
-    <Target Name="RADServerDockerDeploy:Clean">
-        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="RADServerDockerDeploy:Make">
-        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Make"/>
-    </Target>
     <Target Name="RADServerDockerModule">
         <MSBuild Projects="RADServerDockerModule.dproj"/>
     </Target>
@@ -35,14 +26,23 @@
     <Target Name="RADServerDockerModule:Make">
         <MSBuild Projects="RADServerDockerModule.dproj" Targets="Make"/>
     </Target>
+    <Target Name="RADServerDockerDeploy">
+        <MSBuild Projects="RADServerDockerDeploy.dproj"/>
+    </Target>
+    <Target Name="RADServerDockerDeploy:Clean">
+        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RADServerDockerDeploy:Make">
+        <MSBuild Projects="RADServerDockerDeploy.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="RADServerDockerDeploy;RADServerDockerModule"/>
+        <CallTarget Targets="RADServerDockerModule;RADServerDockerDeploy"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="RADServerDockerDeploy:Clean;RADServerDockerModule:Clean"/>
+        <CallTarget Targets="RADServerDockerModule:Clean;RADServerDockerDeploy:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="RADServerDockerDeploy:Make;RADServerDockerModule:Make"/>
+        <CallTarget Targets="RADServerDockerModule:Make;RADServerDockerDeploy:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

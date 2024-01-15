@@ -1,3 +1,3 @@
 #!/bin/bash
 
- docker pull radstudio/pa-radserver
+ docker pull radstudio/pa-radserver:latest
