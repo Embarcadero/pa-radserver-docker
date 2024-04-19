@@ -1,4 +1,4 @@
-FROM radstudio/pa-radserver:latest
+FROM radstudio/pa-radserver:12.0
 
 ARG dbhost
 ARG dbport

@@ -7,7 +7,6 @@ if [ "$1" = '' ] || [ "$2" = '' ]; then
 else
     docker build --build-arg password=securepass \
         --build-arg dbhost=$1 --build-arg dbport=$2 \
-        --tag radstudio/pa-radserver:latest \
         --tag radstudio/pa-radserver:athens \
         --tag radstudio/pa-radserver:12.0 \
         .
