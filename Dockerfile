@@ -11,16 +11,18 @@ ENV PA_SERVER_PASSWORD=$password
 #INSTALL APACHE AND OTHER LIBS
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yy --no-install-recommends install \
-    apache2 \
+    joe \
+    wget \
+    p7zip-full \
+    curl \
+    openssh-server \
     build-essential \
-    libcurl4-openssl-dev \
-    libcurl4 \
-    libgl1-mesa-dev \
-    libgtk-3-bin \
-    libosmesa-dev \
+    zlib1g-dev \
+    libcurl4-gnutls-dev \
+    libncurses5 \
     libpython3.10 \
-    unzip \
-    xorg
+    apache2 \
+    unzip
 RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
 
@@ -109,8 +111,6 @@ RUN service apache2 restart
 EXPOSE 80 
 # PAServer
 EXPOSE 64211
-# broadwayd
-EXPOSE 8082
 
 #need this to make the apache daemon run in foreground
 #prevent container from ending when docker is started
