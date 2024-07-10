@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ "$CONFIG" = "PRODUCTION" ]; then
-	:
-else
-	nohup broadwayd :2 &
-	export GDK_BACKEND=broadway
-	export BROADWAY_DISPLAY=:2
-fi
-
 #search and replace ems ini file InstanceName
 if [ "$DB_HOST" = "" ]; then
 	:
