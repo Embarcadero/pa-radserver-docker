@@ -10,6 +10,6 @@ else
         --platform linux/amd64 \
         --tag radstudio/pa-radserver:latest \
         --tag radstudio/pa-radserver:athens \
-        --tag radstudio/pa-radserver:12.1.1 \
+        --tag radstudio/pa-radserver:12.2 \
         .
 fi
