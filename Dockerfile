@@ -35,7 +35,7 @@ RUN ln -s /lib/x86_64-linux-gnu/libc.so.6 /lib/libc.so.6
 
 #====GET ZIP FILES====
 ADD https://altd.embarcadero.com/getit/public/libraries/RADServer/RADServerLinux-20240402.zip ./radserver.zip
-ADD https://altd.embarcadero.com/releases/studio/23.0/122/LinuxPAServer23.0.tar.gz ./paserver.tar.gz
+ADD https://altd.embarcadero.com/releases/studio/23.0/122/1221/LinuxPAServer23.0.tar.gz ./paserver.tar.gz
 
 RUN unzip radserver.zip
 RUN tar xvzf paserver.tar.gz
