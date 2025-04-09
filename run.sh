@@ -10,5 +10,5 @@ else
         -it --mount source=ems,target=/etc/ems \
 	-e DB_PORT=$2 -e DB_HOST=$1 \
         -e PA_SERVER_PASSWORD=securepass -p 80:80 -p 64211:64211 \
-	radstudio/pa-radserver:latest
+	radstudio/pa-radserver:12.2.1
 fi
