@@ -8,7 +8,6 @@ else
     docker build --build-arg password=securepass \
         --build-arg dbhost=$1 --build-arg dbport=$2 \
         --platform linux/amd64 \
-        --tag radstudio/pa-radserver:latest \
         --tag radstudio/pa-radserver:athens \
         --tag radstudio/pa-radserver:12.3 \
         .
